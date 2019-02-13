@@ -7,5 +7,6 @@ namespace GradeBook.Models
 {
     public class Teacher : User
     {
+        public List<Course> Courses { get; set; }
     }
 }
