@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
-export class Counter extends Component {
-  displayName = Counter.name
+export class TeacherIndex extends Component {
 
   constructor(props) {
     super(props);
@@ -18,7 +17,7 @@ export class Counter extends Component {
   render() {
     return (
       <div>
-        <h1>Counter</h1>
+        <h1>Welcome {this.props.name}</h1>;
 
         <p>This is a simple example of a React component.</p>
 
