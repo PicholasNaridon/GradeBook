@@ -1,5 +1,6 @@
 ﻿using GradeBook.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,13 +33,18 @@ namespace GradeBook.Controllers
         [Route("[action]")]
         public IActionResult FindById(int id)
         {
+
+
             throw new NotImplementedException();
         }
 
         [Route("[action]")]
         public IActionResult FindAll()
         {
-            throw new NotImplementedException();
+            var result = _ctx.Students
+         .Include(x => x.StudentCourses)
+         .ThenInclude(x => x.Course);
+            return Ok(result);
         }
 
         [Route("[action]")]
