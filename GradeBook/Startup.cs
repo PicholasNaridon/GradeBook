@@ -28,8 +28,7 @@ namespace GradeBook
                     options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
                 );
 
-            services.AddTransient<StudentRepo>();
-
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
             services.AddDbContext<GradeBookContext>(options => 
                 options.UseSqlServer(Configuration.GetConnectionString("GradeBookDatabase")));

@@ -6,13 +6,38 @@ using System.Threading.Tasks;
 
 namespace GradeBook.Services
 {
-    public interface IGenericRepository<T, T1> where T : class
+
+    public interface IGenericRepository<T> where T : EntityBase
     {
-        IEnumerable<T> GetAll();
-        IEnumerable<T> FindBy(T1 id);
+        T GetById(int id);
+        IEnumerable<T> List();
+        IEnumerable<T> List(Expression<Func<T, bool>> predicate);
         void Insert(T entity);
+        void Delete(T entity);
         void Update(T entity);
-        void Delete(T1 id);
-        void Save();
+    }
+
+    public abstract class EntityBase
+    {
+        public int Id
+        {
+            get;
+            set;
+        }
+        public DateTime AddedDate
+        {
+            get;
+            set;
+        }
+        public DateTime ModifiedDate
+        {
+            get;
+            set;
+        }
+        public string IPAddress
+        {
+            get;
+            set;
+        }
     }
 }

@@ -12,9 +12,9 @@ namespace GradeBook.Controllers
     [Route("api/[controller]")]
     public class StudentsController : Controller
     {
-        private readonly StudentRepo _repo;
+        private GenericRepository<Student> _repo;
 
-        public StudentsController(StudentRepo repo)
+        public StudentsController(GenericRepository<Student> repo)
         {
             _repo = repo;
         }
@@ -26,7 +26,6 @@ namespace GradeBook.Controllers
             try
             {
                 _repo.Insert(student);
-                _repo.Save();
                 return Ok(student);
             }
             catch (Exception ex)
@@ -48,23 +47,22 @@ namespace GradeBook.Controllers
         [Route("[action]/{id}")]
         public IActionResult FindById(int id)
         {
-            var results = _repo.FindBy(id);
+            var results = _repo.GetById(id);
             return Ok(results);
         }
 
         [Route("[action]")]
         public IActionResult FindAll()
         {
-            var results = _repo.GetAll();
+            var results = _repo.List();
             return Ok(results);
            
         }
 
         [Route("[action]")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete([FromBody] Student student)
         {
-            _repo.Delete(id);
-            _repo.Save();
+            _repo.Delete(student);
             return Ok();
         }
     }
