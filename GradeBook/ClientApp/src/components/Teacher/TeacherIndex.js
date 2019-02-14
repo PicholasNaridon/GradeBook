@@ -32,8 +32,7 @@ export class TeacherIndex extends Component {
                     <h1> Welcome {isLoading ? '' : this.state.teacher.firstName }</h1>
                     <div> {isLoading ? '' : <TeacherCourseList courses={this.state.teacher.courses} />}</div>
                 </div>
-        );
-        : 
+        )
         return
     }
 }

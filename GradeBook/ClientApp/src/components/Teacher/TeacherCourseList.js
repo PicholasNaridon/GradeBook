@@ -1,5 +1,5 @@
 ﻿import React, { Component } from 'react';
-
+import Heading from '../Generics/Heading'
 export class TeacherCourseList extends Component {
     constructor(props) {
         super(props);
@@ -8,6 +8,7 @@ export class TeacherCourseList extends Component {
     render() {
         return (
             <div>
+                <Heading name={"Course List"} />
                 {
                     this.props.courses.map(function(course) {
                         return (
