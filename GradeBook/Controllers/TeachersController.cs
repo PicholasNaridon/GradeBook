@@ -36,12 +36,12 @@ namespace GradeBook.Controllers
 
         }
 
-        [Route("[action]")]
+        [Route("[action]/{id}")]
         [HttpPut]
         public IActionResult Update([FromBody] Teacher teacher)
         {
             _repo.Update(teacher);
-            return Ok();
+            return Ok(teacher);
         }
 
         [Route("[action]/{id}")]

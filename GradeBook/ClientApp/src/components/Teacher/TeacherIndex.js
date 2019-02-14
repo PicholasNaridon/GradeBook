@@ -1,30 +1,39 @@
 import React, { Component } from 'react';
+import {TeacherCourseList} from './TeacherCourseList'
 
 export class TeacherIndex extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = { currentCount: 0 };
-    this.incrementCounter = this.incrementCounter.bind(this);
-  }
+    constructor(props) {
+        super(props);
+        this.state = {
+            teacher: {},
+            loading: true
+        };
+    }
 
-  incrementCounter() {
-    this.setState({
-      currentCount: this.state.currentCount + 1
-    });
-  }
+    componentDidMount() {
+        fetch('api/teacher/2/Courses/Index')
+            .then(response => response.json())
+            .then(data => {
+                this.setState({
+                    teacher: data[0],
+                    loading: false
+                });
+            });
 
-  render() {
-    return (
-      <div>
-        <h1>Welcome {this.props.name}</h1>;
+    }
 
-        <p>This is a simple example of a React component.</p>
+    render() {
+        const isLoading = this.state.loading
 
-        <p>Current count: <strong>{this.state.currentCount}</strong></p>
-
-        <button onClick={this.incrementCounter}>Increment</button>
-      </div>
-    );
-  }
+        isLoading 
+            return (
+                <div>
+                    <h1> Welcome {isLoading ? '' : this.state.teacher.firstName }</h1>
+                    <div> {isLoading ? '' : <TeacherCourseList courses={this.state.teacher.courses} />}</div>
+                </div>
+        );
+        : 
+        return
+    }
 }
