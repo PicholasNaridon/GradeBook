@@ -1,4 +1,5 @@
 using GradeBook.Models;
+using GradeBook.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,6 +27,9 @@ namespace GradeBook
                 .AddJsonOptions(
                     options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
                 );
+
+            services.AddTransient<StudentRepo>();
+
 
             services.AddDbContext<GradeBookContext>(options => 
                 options.UseSqlServer(Configuration.GetConnectionString("GradeBookDatabase")));

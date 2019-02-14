@@ -1,4 +1,5 @@
 ﻿using GradeBook.Models;
+using GradeBook.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -11,88 +12,60 @@ namespace GradeBook.Controllers
     [Route("api/[controller]")]
     public class StudentsController : Controller
     {
-        private readonly GradeBookContext _ctx;
+        private readonly StudentRepo _repo;
 
-        public StudentsController(GradeBookContext ctx)
+        public StudentsController(StudentRepo repo)
         {
-            _ctx = ctx;
+            _repo = repo;
+        }
+
+        [HttpPost]
+        [Route("[action]")]
+        public IActionResult Create([FromBody] Student student)
+        {
+            try
+            {
+                _repo.Insert(student);
+                _repo.Save();
+                return Ok(student);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Something went wrong {ex}");
+                throw;
+            }
+
         }
 
         [Route("[action]")]
-        public IActionResult Create()
+        [HttpPut]
+        public IActionResult Update([FromBody] Student student)
         {
-            throw new NotImplementedException();
-        }
-
-        [Route("[action]")]
-        public IActionResult Update()
-        {
-            throw new NotImplementedException();
+            _repo.Update(student);
+            return Ok();
         }
 
         [Route("[action]/{id}")]
         public IActionResult FindById(int id)
         {
-            try
-            {
-                var result = _ctx.Students
-                      .Where(s => s.Id == id)
-                      .Include(x => x.StudentCourses)
-                      .ThenInclude(x => x.Course);
-                return Ok(result);
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($" ran into some problemz {ex}");
-                throw;
-            }
-           
-            throw new NotImplementedException();
+            var results = _repo.FindBy(id);
+            return Ok(results);
         }
 
         [Route("[action]")]
         public IActionResult FindAll()
         {
-            try
-            {
-                var student = _ctx.Students
-                    .Include(s => s.StudentCourses)
-                    .ThenInclude(s => s.Course);
-                   
-                //var result = student.Select(s => new
-                //{
-                //    s.StudentCourses.FirstOrDefault(),
-                //    s.Id,
-                //    s.FirstName,
-
-                //})
-
-               
-                //var result = Json(student.Select(s => new
-                //{
-                //    s.Id,
-                //    s.FirstName,
-                //    s.LastName,
-                //    s.Email
-
-                //}));
-
-
-                return Ok(student);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($" ran into some problemz {ex}");
-                throw;
-            }
+            var results = _repo.GetAll();
+            return Ok(results);
            
         }
 
         [Route("[action]")]
-        public IActionResult Delete()
+        public IActionResult Delete(int id)
         {
-            throw new NotImplementedException();
+            _repo.Delete(id);
+            _repo.Save();
+            return Ok();
         }
     }
 }
