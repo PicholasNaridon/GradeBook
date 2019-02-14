@@ -12,9 +12,9 @@ namespace GradeBook.Controllers
     [Route("api/[controller]")]
     public class StudentsController : Controller
     {
-        private GenericRepository<Student> _repo;
+        private IGenericRepository<Student> _repo;
 
-        public StudentsController(GenericRepository<Student> repo)
+        public StudentsController(IGenericRepository<Student> repo)
         {
             _repo = repo;
         }
