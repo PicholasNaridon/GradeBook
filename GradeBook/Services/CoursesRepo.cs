@@ -41,10 +41,21 @@ namespace GradeBook.Services
                                   join c in _ctx.Courses on sc.CourseId equals c.Id
                                   select new
                                   {
-                                      StudentId = s.Id,
-                                      StudentName = s.FirstName + " " + s.LastName,
-                                      CourseId = c.Id,
-                                      CourseName = c.Name
+                                      teacher = c.Teacher,
+                                      course = new
+                                      {
+                                          id = c.Id,
+                                          name = c.Name,
+
+                                      },
+                                      student = new
+                                      {
+                                          id = s.Id,
+                                          firstName = s.FirstName,
+                                          lastName = s.LastName,
+                                          email = s.Email
+
+                                      }
                                   });
 
             return StudentCourses;
