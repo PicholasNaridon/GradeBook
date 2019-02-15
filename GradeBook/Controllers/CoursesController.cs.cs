@@ -34,5 +34,13 @@ namespace GradeBook.Controllers
             return Ok(results);
         }
 
+        [Route("[action]/{courseId}")]
+        public IActionResult Course([FromRoute] int courseId)
+        {
+            var results = _coursesRepo.GetCourse(courseId);
+
+            return Ok(results);
+        }
+
     }
 }
