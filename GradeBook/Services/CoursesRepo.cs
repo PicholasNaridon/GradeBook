@@ -46,7 +46,6 @@ namespace GradeBook.Services
                                       {
                                           id = c.Id,
                                           name = c.Name,
-
                                       },
                                       student = new
                                       {
@@ -60,6 +59,18 @@ namespace GradeBook.Services
 
             return StudentCourses;
            
+        }
+
+        public IQueryable StudentsByCourse(int courseId)
+        {
+            var course = _ctx.Courses
+                 .Where(c => c.Id == courseId)
+                 .SelectMany(p => p.StudentCourses)
+                 .Select(sc => sc.Student)
+                 .
+
+
+            return course;
         }
     }
 }

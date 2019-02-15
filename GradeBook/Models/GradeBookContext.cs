@@ -41,6 +41,11 @@ namespace GradeBook.Models
                 .HasOne(c => c.Teacher)
                 .WithMany(t => t.Courses)
                 .HasForeignKey(c => c.TeacherId);
+
+            modelBuilder.Entity<Assignment>()
+                .HasOne(a => a.Student)
+                .WithMany(s => s.Assignments)
+                .HasForeignKey(a => a.StudentId);
         }
 
         public DbSet<Teacher> Teachers { get; set; }

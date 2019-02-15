@@ -4,6 +4,7 @@ namespace GradeBook.Models
 {
     public class Student : User
     {
-        public List<StudentCourse> StudentCourses { get; set; }
+        public virtual ICollection<StudentCourse> StudentCourses { get; set; }
+        public List<Assignment> Assignments { get; set; }
     }
 }

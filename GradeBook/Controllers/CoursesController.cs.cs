@@ -25,6 +25,13 @@ namespace GradeBook.Controllers
             _coursesRepo = couresesRepo;
             _ctx = ctx;
         }
+         [Route("[action]")]
+        public IActionResult Main()
+        {
+            var results = _coursesRepo.StudentsByCourse(2);
+
+            return Ok(results);
+        }
 
         [Route("[action]")]
         public IActionResult Index([FromRoute] int teacherId)
@@ -41,6 +48,9 @@ namespace GradeBook.Controllers
 
             return Ok(results);
         }
+
+       
+
 
     }
 }
