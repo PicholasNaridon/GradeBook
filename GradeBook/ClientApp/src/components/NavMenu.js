@@ -9,7 +9,7 @@ export class NavMenu extends Component {
 
   render() {
     return (
-      <Navbar inverse fixedTop fluid collapseOnSelect>
+      <Navbar fixedTop fluid collapseOnSelect>
         <Navbar.Header>
           <Navbar.Brand>
             <Link to={'/'}>GradeBook</Link>
@@ -25,12 +25,12 @@ export class NavMenu extends Component {
             </LinkContainer>
             <LinkContainer to={'/Teacher'}>
               <NavItem>
-                <Glyphicon glyph='education' /> Counter
+                <Glyphicon glyph='education' /> Teacher
               </NavItem>
             </LinkContainer>
             <LinkContainer to={'/Student'}>
               <NavItem>
-                <Glyphicon glyph='th-list' /> Fetch data
+                <Glyphicon glyph='th-list' /> Student
               </NavItem>
             </LinkContainer>
           </Nav>

@@ -7,7 +7,7 @@
 .navbar .navbar-nav .active a:hover,
 .navbar .navbar-nav .active a:focus {
     background-image: none;
-    background-color: #4189C7;
+    background-color: #7e4082;
     color: white;
 }
 
@@ -16,17 +16,19 @@
     .navbar {
         height: 100%;
         width: calc(25% - 20px);
+        background-color: #7e4082;
     }
     .navbar {
         border-radius: 0;
         border-width: 0;
         height: 100%;
+        background-color: #7e4082;
     }
     .navbar-header {
         float: none;
     }
     .navbar .navbar-collapse {
-        border-top: 1px solid #444;
+        border-top: 1px solid #7e4082;
         padding: 0;
     }
     .navbar .container-fluid {
@@ -35,9 +37,10 @@
     }
     .navbar .container-fluid .navbar-brand {
         margin: 0;
+        color: #7e4082;
     }
-    .navbar ul {
-        float: none;
+.navbar ul {
+    float: none;
     }
     .navbar li {
         float: none;

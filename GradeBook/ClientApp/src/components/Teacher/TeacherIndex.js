@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {TeacherCourseList} from './TeacherCourseList'
+import HeadingOne from '../Generics/HeadingOne';
 
 export class TeacherIndex extends Component {
 
@@ -29,7 +30,7 @@ export class TeacherIndex extends Component {
         isLoading 
             return (
                 <div>
-                    <h1> Welcome {isLoading ? '' : this.state.teacher.firstName }</h1>
+                    <HeadingOne> Welcome {isLoading ? '' : this.state.teacher.firstName}!</HeadingOne>
                     <div> {isLoading ? '' : <TeacherCourseList courses={this.state.teacher.courses} />}</div>
                 </div>
         )
