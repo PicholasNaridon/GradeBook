@@ -66,10 +66,10 @@ namespace GradeBook.Controllers
             return Ok(results);
         }
 
-        [Route("[action]/{courseId}")]
-        public IActionResult B([FromRoute] int courseId)
+        [Route("[action]")]
+        public IActionResult GetTeacherCourses([FromRoute] int teacherId)
         {
-            var results = _coursesRepo.B(courseId);
+            var results = _coursesRepo.B(teacherId);
 
             return Ok(results);
         }

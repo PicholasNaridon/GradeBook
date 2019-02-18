@@ -88,12 +88,13 @@ namespace GradeBook.Services
             return results;
         }
 
-        public object B(int courseId)
+        public object B(int teacherId)
         {
            var results = _ctx.Teachers
                          .Include(t => t.Courses)
                             .ThenInclude(c => c.StudentCourses)
                                 .ThenInclude(sc => sc.Student)
+                                .Where(t => t.Id == teacherId)
                          .ToList();
 
             foreach(var teacher in results)
@@ -103,6 +104,9 @@ namespace GradeBook.Services
                     foreach(var studentCourse in course.StudentCourses)
                     {
                         studentCourse.Student.StudentCourses = null;
+                        studentCourse.Student.password = null;
+                        studentCourse.Student.IPAddress = null;
+
                     }
                 }
             }
