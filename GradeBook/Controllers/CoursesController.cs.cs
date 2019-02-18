@@ -49,8 +49,30 @@ namespace GradeBook.Controllers
             return Ok(results);
         }
 
-       
 
+        [Route("[action]/{courseId}")]
+        public IActionResult CoursePlus([FromRoute] int courseId)
+        {
+            var results = _coursesRepo.CoursePlus(courseId);
+
+            return Ok(results);
+        }
+
+        [Route("[action]/{courseId}")]
+        public IActionResult A([FromRoute] int courseId)
+        {
+            var results = _coursesRepo.A(courseId);
+
+            return Ok(results);
+        }
+
+        [Route("[action]/{courseId}")]
+        public IActionResult B([FromRoute] int courseId)
+        {
+            var results = _coursesRepo.B(courseId);
+
+            return Ok(results);
+        }
 
     }
 }

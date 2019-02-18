@@ -9,4 +9,4 @@ const hStyling = {
 
 export default function HeadingTwo (props) {
     return (<h2 style={hStyling}>{props.children}</h2> );
-}
+}   
