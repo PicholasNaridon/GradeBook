@@ -1,5 +1,5 @@
 ﻿import React, { Component } from 'react';
-
+import { Link } from 'react-router-dom'
 
 class Assignments extends Component {
     constructor(props) {
@@ -31,7 +31,9 @@ class Assignments extends Component {
                 <div>
                     {this.state.assignments.map(function (assignment) {
                         return (
-                             <div key={assignment.id}>{assignment.name}</div>
+                            <div key={assignment.id}>
+                                <Link to={'/assignment/' + assignment.id}>{assignment.name}</Link>
+                            </div>  
                         )
                     })}
                 </div>

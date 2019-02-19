@@ -26,7 +26,7 @@ namespace GradeBook.Services
 
         public object GetAssignmentGrades(int assignmentId)
         {
-            var grades = _ctx.CourseAssignments.Include(c => c.Grades).Where(c => c.Id == assignmentId);
+            var grades = _ctx.CourseAssignments.Include(c => c.Grades).ThenInclude(c => c.Student).Where(c => c.Id == assignmentId).FirstOrDefault();
 
 
             return grades;
