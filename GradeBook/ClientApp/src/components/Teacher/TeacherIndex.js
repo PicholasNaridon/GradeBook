@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {TeacherCourseList} from './TeacherCourseList'
 import HeadingOne from '../Generics/HeadingOne';
+import  ReactLoading  from 'react-loading'
 
 export class TeacherIndex extends Component {
 
@@ -13,7 +14,7 @@ export class TeacherIndex extends Component {
     }
 
     componentDidMount() {
-        fetch('api/teacher/2/Courses/Index')
+        fetch('api/teacher/1/Courses/all')
             .then(response => response.json())
             .then(data => {
                 this.setState({
@@ -27,13 +28,22 @@ export class TeacherIndex extends Component {
     render() {
         const isLoading = this.state.loading
 
-        isLoading 
+        if (!isLoading) {
             return (
                 <div>
-                    <HeadingOne> Welcome {isLoading ? '' : this.state.teacher.firstName}!</HeadingOne>
-                    <div> {isLoading ? '' : <TeacherCourseList courses={this.state.teacher.courses} />}</div>
+                    <HeadingOne> Welcome {this.state.teacher.firstName}!</HeadingOne>
+                    <div>
+
+                        <TeacherCourseList courses={this.state.teacher.courses} />
+
+                    </div>
                 </div>
-        )
-        return
+            )
+        } else {
+            return (
+                <ReactLoading type="spokes" color="#7e4082" height={'20%'} width={'20%'} />
+            )
+        }
+        
     }
 }

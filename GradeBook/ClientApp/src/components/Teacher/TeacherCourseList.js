@@ -1,5 +1,9 @@
 ﻿import React, { Component } from 'react';
 import HeadingTwo from '../Generics/HeadingTwo';
+import { Route } from 'react-router';
+import { Link } from 'react-router-dom';
+
+import CourseMain from '../Courses/CourseMain'
 
 
 export class TeacherCourseList extends Component {
@@ -15,10 +19,11 @@ export class TeacherCourseList extends Component {
                     this.props.courses.map(function(course) {
                         return (
                             <div key={course.id}>
-                                <a href={'/courses/' + course.id}>{course.name}</a>
+                                <Link to={'/courses/' + course.id}>{course.name}</Link>
                             </div>    
                         )
-                        })}
+                    })
+                }
             </div>
         );
     }
