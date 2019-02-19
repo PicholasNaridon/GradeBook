@@ -35,28 +35,30 @@ namespace GradeBook.Models
                 .WithMany(c => c.StudentCourses)
                 .HasForeignKey(sc => sc.CourseId);
 
-
-
             modelBuilder.Entity<Course>()
                 .HasOne(c => c.Teacher)
                 .WithMany(t => t.Courses)
                 .HasForeignKey(c => c.TeacherId);
 
-            modelBuilder.Entity<Assignment>()
-                .HasOne(a => a.Course)
-                .WithMany(c => c.Assignments)
-                .HasForeignKey(c => c.CourseId);
+            modelBuilder.Entity<CourseAssignment>()
+                 .HasOne(a => a.Course)
+                 .WithMany(c => c.CourseAssignments)
+                 .HasForeignKey(c => c.CourseId);
 
-            modelBuilder.Entity<Assignment>()
-                .HasOne(a => a.Student)
-                .WithMany(s => s.Assignments)
-                .HasForeignKey(a => a.StudentId);
+            modelBuilder.Entity<Grade>()
+                 .HasOne(g => g.CourseAssignment)
+                 .WithMany(c => c.Grades)
+                 .HasForeignKey(c => c.CourseAssignmentId);
+
+          
         }
 
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<Course> Courses { get; set; }
         public DbSet<StudentCourse> StudentCourses { get; set; }
-        public DbSet<Assignment> Assignments { get; set;}
+        public DbSet<CourseAssignment> CourseAssignments { get; set;}
+        public DbSet<Grade> Grades { get; set; }
+
     }
 }

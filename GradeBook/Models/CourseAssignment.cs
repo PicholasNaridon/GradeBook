@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace GradeBook.Models
 {
-    public class Assignment : EntityBase
+    public class CourseAssignment : EntityBase
     {
-
 
         public Course Course { get; set; }
         public int CourseId { get; set; }
@@ -16,11 +15,6 @@ namespace GradeBook.Models
         public string Type { get; set; }
         public string Name { get; set; }
 
-        public Student Student { get; set; }
-        public int StudentId { get; set; }
-
-
-
-
+        public virtual ICollection<Grade> Grades { get; set;}
     }
 }

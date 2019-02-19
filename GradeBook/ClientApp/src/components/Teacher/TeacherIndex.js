@@ -24,7 +24,7 @@ export class TeacherIndex extends Component {
                         loading: false
                     });
                 })
-        }, 500)
+        }, 250)
 
 
     }

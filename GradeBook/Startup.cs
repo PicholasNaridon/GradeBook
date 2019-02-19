@@ -30,6 +30,8 @@ namespace GradeBook
 
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddTransient<CoursesRepo>();
+            services.AddTransient<AssignmentRepo>();
+
 
             services.AddDbContext<GradeBookContext>(options => 
                 options.UseSqlServer(Configuration.GetConnectionString("GradeBookDatabase")));

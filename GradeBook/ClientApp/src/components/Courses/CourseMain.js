@@ -24,7 +24,7 @@ export class CourseMain extends Component {
                         course: data
                     });
                 });
-        }, 500)
+        }, 250)
         
 
     }

@@ -4,20 +4,55 @@ using GradeBook.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GradeBook.Migrations
 {
     [DbContext(typeof(GradeBookContext))]
-    partial class GradeBookContextModelSnapshot : ModelSnapshot
+    [Migration("20190219161622_Update6")]
+    partial class Update6
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("GradeBook.Models.Assignment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("AddedDate");
+
+                    b.Property<int>("CourseId");
+
+                    b.Property<int>("Grade");
+
+                    b.Property<string>("IPAddress");
+
+                    b.Property<string>("LetterGrade");
+
+                    b.Property<DateTime>("ModifiedDate");
+
+                    b.Property<string>("Name");
+
+                    b.Property<int>("StudentId");
+
+                    b.Property<string>("Type");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CourseId");
+
+                    b.HasIndex("StudentId");
+
+                    b.ToTable("Assignments");
+                });
 
             modelBuilder.Entity("GradeBook.Models.Course", b =>
                 {
@@ -40,64 +75,6 @@ namespace GradeBook.Migrations
                     b.HasIndex("TeacherId");
 
                     b.ToTable("Courses");
-                });
-
-            modelBuilder.Entity("GradeBook.Models.CourseAssignment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("AddedDate");
-
-                    b.Property<int>("CourseId");
-
-                    b.Property<string>("IPAddress");
-
-                    b.Property<DateTime>("ModifiedDate");
-
-                    b.Property<string>("Name");
-
-                    b.Property<int?>("StudentId");
-
-                    b.Property<string>("Type");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CourseId");
-
-                    b.HasIndex("StudentId");
-
-                    b.ToTable("CourseAssignments");
-                });
-
-            modelBuilder.Entity("GradeBook.Models.Grade", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("AddedDate");
-
-                    b.Property<int>("CourseAssignmentId");
-
-                    b.Property<string>("IPAddress");
-
-                    b.Property<string>("LetterGrade");
-
-                    b.Property<DateTime>("ModifiedDate");
-
-                    b.Property<int>("NumGrade");
-
-                    b.Property<int>("StudentId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CourseAssignmentId");
-
-                    b.HasIndex("StudentId");
-
-                    b.ToTable("Grades");
                 });
 
             modelBuilder.Entity("GradeBook.Models.Student", b =>
@@ -171,36 +148,24 @@ namespace GradeBook.Migrations
                     b.ToTable("Teachers");
                 });
 
+            modelBuilder.Entity("GradeBook.Models.Assignment", b =>
+                {
+                    b.HasOne("GradeBook.Models.Course", "Course")
+                        .WithMany("Assignments")
+                        .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("GradeBook.Models.Student", "Student")
+                        .WithMany("Assignments")
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("GradeBook.Models.Course", b =>
                 {
                     b.HasOne("GradeBook.Models.Teacher", "Teacher")
                         .WithMany("Courses")
                         .HasForeignKey("TeacherId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("GradeBook.Models.CourseAssignment", b =>
-                {
-                    b.HasOne("GradeBook.Models.Course", "Course")
-                        .WithMany("CourseAssignments")
-                        .HasForeignKey("CourseId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("GradeBook.Models.Student")
-                        .WithMany("CourseAssignments")
-                        .HasForeignKey("StudentId");
-                });
-
-            modelBuilder.Entity("GradeBook.Models.Grade", b =>
-                {
-                    b.HasOne("GradeBook.Models.CourseAssignment", "CourseAssignment")
-                        .WithMany("Grades")
-                        .HasForeignKey("CourseAssignmentId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("GradeBook.Models.Student", "Student")
-                        .WithMany()
-                        .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
