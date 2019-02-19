@@ -26,7 +26,7 @@ namespace GradeBook.Services
         {
             var course = _ctx.Courses
                                 .Include(c => c.StudentCourses)
-                                .ThenInclude(c => c.Student)
+                                    .ThenInclude(c => c.Student)
                                 .Where(c => c.Id == courseId)
                                 .FirstOrDefault();
             return course;
@@ -39,7 +39,7 @@ namespace GradeBook.Services
                          .Include(t => t.Courses)
                             .ThenInclude(c => c.StudentCourses)
                                 .ThenInclude(sc => sc.Student)
-                                .Where(t => t.Id == teacherId)
+                         .Where(t => t.Id == teacherId)
                          .FirstOrDefault();
 
             
@@ -81,6 +81,20 @@ namespace GradeBook.Services
                 }
             }
            
+            return results;
+
+        }
+
+        public object Test(int teacherId)
+        {
+            var results = _ctx.Teachers
+                          .Include(t => t.Courses)
+                             .ThenInclude(c => c.StudentCourses)
+                                 .ThenInclude(sc => sc.Student)
+                          .ToList();
+
+          
+
             return results;
 
         }

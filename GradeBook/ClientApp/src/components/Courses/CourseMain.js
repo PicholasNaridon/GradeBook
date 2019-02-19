@@ -13,15 +13,19 @@ export class CourseMain extends Component {
     }
 
     componentDidMount() {
-        fetch(`api/teacher/1/courses/details/${this.props.match.params.id}`)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data)
-                this.setState({
-                    isLoading: false,
-                    course: data
+        var that = this
+        setTimeout(function () {
+            fetch(`api/teacher/1/courses/details/${that.props.match.params.id}`)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                    that.setState({
+                        isLoading: false,
+                        course: data
+                    });
                 });
-            });
+        }, 500)
+        
 
     }
 

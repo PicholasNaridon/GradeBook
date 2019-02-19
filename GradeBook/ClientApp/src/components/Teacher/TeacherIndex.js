@@ -14,14 +14,18 @@ export class TeacherIndex extends Component {
     }
 
     componentDidMount() {
-        fetch('api/teacher/1/Courses/all')
-            .then(response => response.json())
-            .then(data => {
-                this.setState({
-                    teacher: data[0],
-                    loading: false
-                });
-            });
+        var that = this
+        setTimeout(function () {
+            fetch('api/teacher/1/Courses/all')
+                .then(response => response.json())
+                .then(data => {
+                    that.setState({
+                        teacher: data[0],
+                        loading: false
+                    });
+                })
+        }, 500)
+
 
     }
 

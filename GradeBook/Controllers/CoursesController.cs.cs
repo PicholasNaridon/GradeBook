@@ -43,11 +43,20 @@ namespace GradeBook.Controllers
             return Ok(results);
         }
 
-        //List teacher with all courses and associated students
+        //List Course Details and students
         [Route("[action]/{courseId}")]
         public IActionResult Details([FromRoute] int courseId)
         {
             var results = _coursesRepo.GetCourseDetails(courseId);
+
+            return Ok(results);
+        }
+
+
+        [Route("[action]")]
+        public IActionResult Test([FromRoute] int teacherId)
+        {
+            var results = _coursesRepo.Test(teacherId);
 
             return Ok(results);
         }
