@@ -16,12 +16,18 @@ namespace GradeBook.Services
             _ctx = ctx;
         }
 
-        public object getCourseGrades(int courseId)
+        public object GetCourseAssignments(int courseId)
         {
-            var grades = _ctx.Courses
-                            .Include(c => c.CourseAssignments)
-                            .Where(c => c.Id == courseId);
+            var assingments = _ctx.Courses.Include(c => c.CourseAssignments).Where(c => c.Id == courseId);
                             
+
+            return assingments;
+        }
+
+        public object GetAssignmentGrades(int assignmentId)
+        {
+            var grades = _ctx.CourseAssignments.Include(c => c.Grades).Where(c => c.Id == assignmentId);
+
 
             return grades;
         }

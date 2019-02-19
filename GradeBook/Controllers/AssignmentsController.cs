@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GradeBook.Controllers
 {
-    [Route("api/course/{courseId}")]
+    [Route("api/")]
     public class AssignmentsController : Controller
     {
         private readonly AssignmentRepo _repo;
@@ -16,10 +16,17 @@ namespace GradeBook.Controllers
         {
                 _repo = repo;
         }
-        [Route("[action]")]
+        [Route("course/{courseId}/[action]")]
         public IActionResult Assignments([FromRoute] int courseId)
         {
-            var grades = _repo.getCourseGrades(courseId);
+            var grades = _repo.GetCourseAssignments(courseId);
+            return Ok(grades);
+        }
+
+        [Route("assignments/{id}/[action]")]
+        public IActionResult Grades([FromRoute] int id)
+        {
+            var grades = _repo.GetAssignmentGrades(id);
             return Ok(grades);
         }
     }
