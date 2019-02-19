@@ -18,7 +18,7 @@ namespace GradeBook.Services
 
         public object GetCourseAssignments(int courseId)
         {
-            var assingments = _ctx.Courses.Include(c => c.CourseAssignments).Where(c => c.Id == courseId);
+            var assingments = _ctx.Courses.Include(c => c.CourseAssignments).Where(c => c.Id == courseId).FirstOrDefault();
                             
 
             return assingments;

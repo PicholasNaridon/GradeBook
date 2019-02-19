@@ -2,6 +2,7 @@
 import HeadingTwo from '../Generics/HeadingTwo'
 import ReactLoading from 'react-loading';
 import CourseStudents from './CourseStudents'
+import Assignments from '../Assignments/Assignments'
 
 export class CourseMain extends Component {
     constructor(props) {
@@ -39,6 +40,8 @@ export class CourseMain extends Component {
                     <HeadingTwo>{this.state.course.name}</HeadingTwo>
                     <h4>Students</h4>
                     <CourseStudents students={this.state.course.studentCourses} />
+                    <h4>Assignments</h4>
+                    <Assignments courseId={this.state.course.id} />
                 </div>  
                 
             )
