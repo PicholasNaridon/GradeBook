@@ -12,5 +12,6 @@ namespace GradeBook.Models
         public virtual ICollection<StudentCourse> StudentCourses { get; set; }
         public Teacher Teacher { get; set; }
         public int TeacherId { get; set; }
+        public virtual ICollection<Assignment> Assignments { get;  set; }
     }
 }
