@@ -48,7 +48,7 @@ namespace GradeBook.Services
                 foreach(var studentCourse in course.StudentCourses)
                 {
                     studentCourse.Student.StudentCourses = null;
-                    studentCourse.Student.password = null;
+                    studentCourse.Student.Password = null;
                     studentCourse.Student.IPAddress = null;
 
                 }
@@ -74,7 +74,7 @@ namespace GradeBook.Services
                     foreach (var studentCourse in course.StudentCourses)
                     {
                         studentCourse.Student.StudentCourses = null;
-                        studentCourse.Student.password = null;
+                        studentCourse.Student.Password = null;
                         studentCourse.Student.IPAddress = null;
 
                     }

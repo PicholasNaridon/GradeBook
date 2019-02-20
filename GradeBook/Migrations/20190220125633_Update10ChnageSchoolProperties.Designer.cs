@@ -4,14 +4,16 @@ using GradeBook.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GradeBook.Migrations
 {
     [DbContext(typeof(GradeBookContext))]
-    partial class GradeBookContextModelSnapshot : ModelSnapshot
+    [Migration("20190220125633_Update10ChnageSchoolProperties")]
+    partial class Update10ChnageSchoolProperties
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -168,9 +170,9 @@ namespace GradeBook.Migrations
 
                     b.Property<DateTime>("ModifiedDate");
 
-                    b.Property<string>("Password");
-
                     b.Property<int?>("SchoolId");
+
+                    b.Property<string>("password");
 
                     b.HasKey("Id");
 
@@ -218,9 +220,9 @@ namespace GradeBook.Migrations
 
                     b.Property<DateTime>("ModifiedDate");
 
-                    b.Property<string>("Password");
-
                     b.Property<int?>("SchoolId");
+
+                    b.Property<string>("password");
 
                     b.HasKey("Id");
 

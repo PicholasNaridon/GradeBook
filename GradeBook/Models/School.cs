@@ -9,13 +9,13 @@ namespace GradeBook.Models
     public class School : EntityBase
     {
 
-        public string name { get; set; }
+        public string Name { get; set; }
         public string StreetAddress1 { get; set; }
         public string StreetAddress2 { get; set; }
         public string City { get; set; }
         public string Zip { get; set; }
         public string State { get; set; }
-        public int Country { get; set; }
+        public string Country { get; set; }
 
         public int DistrictId { get; set; }
         public District District { get; set; }

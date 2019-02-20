@@ -1,5 +1,7 @@
+using GradeBook.Helpers;
 using GradeBook.Models;
 using GradeBook.Services;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,9 +34,15 @@ namespace GradeBook
             services.AddTransient<CoursesRepo>();
             services.AddTransient<AssignmentRepo>();
 
+            services.AddAuthentication("BasicAuthentication")
+                .AddScheme<AuthenticationSchemeOptions, TeacherAuthenticationHandler>("BasicAuthentication", null);
 
             services.AddDbContext<GradeBookContext>(options => 
                 options.UseSqlServer(Configuration.GetConnectionString("GradeBookDatabase")));
+
+            services.AddScoped<ITeacherService, TeacherService>();
+            services.AddScoped<IStudentService, StudentService>();
+
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -59,6 +67,15 @@ namespace GradeBook
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
+
+            app.UseCors(x => x
+               .AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader()
+               .AllowCredentials());
+
+            app.UseAuthentication();
+
 
             app.UseMvc(routes =>
             {
