@@ -40,15 +40,31 @@ namespace GradeBook.Models
                 .WithMany(t => t.Courses)
                 .HasForeignKey(c => c.TeacherId);
 
+            modelBuilder.Entity<School>()
+                .HasOne(c => c.District)
+                .WithMany(t => t.Schools)
+                .HasForeignKey(c => c.DistrictId);
+
+            //modelBuilder.Entity<Teacher>()
+            //   .HasOne(c => c.School)
+            //   .WithMany(t => t.Teachers)
+            //   .HasForeignKey(c => c.SchoolId);
+
+
+            //modelBuilder.Entity<Student>()
+            //   .HasOne(s => s.School)
+            //   .WithMany(s => s.Students)
+            //   .HasForeignKey(s => s.SchoolId);
+
             modelBuilder.Entity<CourseAssignment>()
-                 .HasOne(a => a.Course)
-                 .WithMany(c => c.CourseAssignments)
-                 .HasForeignKey(c => c.CourseId);
+                .HasOne(a => a.Course)
+                .WithMany(c => c.CourseAssignments)
+                .HasForeignKey(c => c.CourseId);
 
             modelBuilder.Entity<Grade>()
-                 .HasOne(g => g.CourseAssignment)
-                 .WithMany(c => c.Grades)
-                 .HasForeignKey(c => c.CourseAssignmentId);
+                .HasOne(g => g.CourseAssignment)
+                .WithMany(c => c.Grades)
+                .HasForeignKey(c => c.CourseAssignmentId);
 
           
         }
@@ -59,6 +75,9 @@ namespace GradeBook.Models
         public DbSet<StudentCourse> StudentCourses { get; set; }
         public DbSet<CourseAssignment> CourseAssignments { get; set;}
         public DbSet<Grade> Grades { get; set; }
+        public DbSet<School> Schools { get; set; }
+        public DbSet<District> District { get; set; }
+
 
     }
 }

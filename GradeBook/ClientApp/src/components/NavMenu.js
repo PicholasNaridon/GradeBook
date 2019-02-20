@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Glyphicon, Nav, Navbar, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import './NavMenu.css';
-import logo from '../Assets/Images/frontline.png'
+import logo from '../Assets/Images/frontline-logo-white.png'
 
 export class NavMenu extends Component {
   displayName = NavMenu.name
@@ -12,9 +12,7 @@ export class NavMenu extends Component {
     return (
       <Navbar fixedTop fluid collapseOnSelect>
         <Navbar.Header>
-          <Navbar.Brand>
             <Link to={'/'}><img src={logo} alt='logo' /></Link>
-          </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>

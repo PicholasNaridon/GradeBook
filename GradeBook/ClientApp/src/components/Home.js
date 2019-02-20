@@ -8,8 +8,8 @@ export class Home extends Component {
   render() {
     return (
         <div>
-            <HeadingOne> GradeBook</HeadingOne>
-            <HeadingTwo>Tips</HeadingTwo>
+            <HeadingOne>Welcome to</HeadingOne>
+            <HeadingTwo>Gradebook</HeadingTwo>
         </div>
     );
   }

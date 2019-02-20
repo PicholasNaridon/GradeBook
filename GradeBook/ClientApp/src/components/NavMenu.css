@@ -11,8 +11,9 @@
     color: white;
 }
 
+
+
 img {
-    margin-top: -20px;
     margin-left: -30px;
     width: 200px;
 }
@@ -20,18 +21,21 @@ img {
     /* On large screens, convert the nav menu to a vertical sidebar */
     .navbar {
         height: 100%;
-        width: calc(25% - 20px);
+        width: calc(30% - 200px);
         background-color: #7e4082;
     }
     img {
-        margin-top: -30px;
-        width: 200px;
+        margin-left: 10px;
     }
     .navbar {
         border-radius: 0;
         border-width: 0;
         height: 100%;
         background-color: #7e4082;
+        background-image: url(https://1887dt387czs25eqxs3c1ipg-wpengine.netdna-ssl.com/wp-content/themes/frontlineed/css/../images/NavMegaMenuBackgroundPattern.png);
+        background-repeat: no-repeat;
+        background-position: -330px 580px;
+        background-size: 800px;
     }
     .navbar-header {
         float: none;

@@ -5,7 +5,6 @@ class AssignmentGrades extends Component {
         super(props)
     }
     render () {
-        console.log('GRADEs', this.props.grades)
         return (
             <div>
                 <table  style={{width: '100%'}}>
