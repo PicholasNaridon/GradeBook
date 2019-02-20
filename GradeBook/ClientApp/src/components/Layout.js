@@ -10,6 +10,28 @@ export class Layout extends Component {
       loggedIn: false,
       user: {}
     }
+
+    this.handleLogin = this.handleLogin.bind(this)
+  }
+
+  componentDidMount(){
+    try{
+      var user = JSON.parse(localStorage.user)
+      this.setState({
+        user: user,
+        loggedIn: true
+      })
+    }catch(err){
+      this.setState({
+        loggedIn: false
+      })
+    }
+  }
+
+  handleLogin(){
+    this.setState({
+      loggedIn: true
+    })
   }
 
   render() {
@@ -30,7 +52,7 @@ export class Layout extends Component {
       );
     }else{
       return (
-        <Login />
+        <Login handleLogin={this.handleLogin} />
       )
     }
   }

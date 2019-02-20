@@ -6,7 +6,8 @@ class Login extends Component {
         this.state = {
             isStudent: true,
             email: '', 
-            password: ''
+            password: '',
+            message: ''
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -28,6 +29,7 @@ class Login extends Component {
     }
 
     Authenticate(email, password){
+        var that = this
         var data ={
             email: email,
             password: password
@@ -41,8 +43,20 @@ class Login extends Component {
             },
             body: JSON.stringify(data)
         })
-        .then(response => response.json())
-        .then(data => console.log(data))
+        .then((response) =>{
+            if (response.status === 200){
+                that.props.handleLogin()
+            }else{
+                that.setState({
+                    message: 'Wrong username or password'
+                })
+            }
+           return response.json()
+        })
+        .then((data) => {
+           localStorage.setItem("user", JSON.stringify(data))
+        })
+        
     }
     render () {
         var isStudent = this.state.isStudent
@@ -51,6 +65,7 @@ class Login extends Component {
                 <div>
                     <h1>Student login</h1>
                     <form onSubmit={this.handleSubmit}>
+                        <div>{this.state.message}</div>
                         <label for="email">Email</label>
                         <input type="text" id="email" name="email" value={this.state.email} onChange={this.handleChange}/>
                         <label for="password">Password</label>
@@ -67,6 +82,7 @@ class Login extends Component {
                 <div>
                     <h1>Teacher login</h1>
                     <form onSubmit={this.handleSubmit}>
+                        <div>{this.state.message}</div>
                         <label for="email">Email</label>
                         <input type="text" id="email" name="email" value={this.state.email} onChange={this.handleChange}/>
                         <label for="password">Password</label>
