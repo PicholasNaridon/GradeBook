@@ -34,12 +34,7 @@ namespace GradeBook.Controllers
             return Ok(user);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetAll()
-        {
-            var users = await _teacherService.GetAll();
-            return Ok(users);
-        }
+       
     }
     
 }

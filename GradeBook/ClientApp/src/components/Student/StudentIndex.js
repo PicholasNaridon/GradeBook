@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export class StudentIndex extends Component {
+class StudentIndex extends Component {
 
   constructor(props) {
     super(props);
@@ -18,3 +18,5 @@ export class StudentIndex extends Component {
     );
   }
 }
+
+export default StudentIndex

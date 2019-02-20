@@ -13,13 +13,12 @@ namespace GradeBook.Services
 
     public class StudentService : IStudentService
     {
+        private readonly GradeBookContext _ctx;
 
         public StudentService(GradeBookContext ctx)
         {
             _ctx = ctx;
         }
-        // users hardcoded for simplicity, store in a db with hashed passwords in production applications
-        private readonly GradeBookContext _ctx;
 
         public async Task<Student> Authenticate(string username, string password)
         {

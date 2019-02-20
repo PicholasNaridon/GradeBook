@@ -4,7 +4,7 @@ import ReactLoading from 'react-loading';
 import CourseStudents from './CourseStudents'
 import Assignments from '../Assignments/Assignments'
 
-export class CourseMain extends Component {
+class CourseMain extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -50,3 +50,5 @@ export class CourseMain extends Component {
         }
     }
 }
+
+export default CourseMain

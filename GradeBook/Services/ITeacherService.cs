@@ -15,8 +15,6 @@ namespace GradeBook.Services
     {
         private readonly GradeBookContext _ctx;
 
-        // users hardcoded for simplicity, store in a db with hashed passwords in production applications
-
         public TeacherService(GradeBookContext ctx)
         {
             _ctx = ctx;

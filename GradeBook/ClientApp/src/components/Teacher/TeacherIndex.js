@@ -3,7 +3,7 @@ import {TeacherCourseList} from './TeacherCourseList'
 import HeadingOne from '../Generics/HeadingOne';
 import  ReactLoading  from 'react-loading'
 
-export class TeacherIndex extends Component {
+class TeacherIndex extends Component {
 
     constructor(props) {
         super(props);
@@ -51,3 +51,5 @@ export class TeacherIndex extends Component {
         
     }
 }
+
+export default TeacherIndex

@@ -3,7 +3,7 @@ import HeadingOne from '../Generics/HeadingOne'
 import HeadingTwo from '../Generics/HeadingTwo'
 import AssignmentGrades from './AssignmentGrades'
 
-export class Assignment extends Component {
+class Assignment extends Component {
     constructor(props){
         super(props)
         this.state = {
@@ -41,3 +41,4 @@ export class Assignment extends Component {
     }
 }
 
+export default Assignment

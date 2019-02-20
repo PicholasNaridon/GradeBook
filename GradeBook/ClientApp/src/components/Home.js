@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import HeadingOne from './Generics/HeadingOne'
 import HeadingTwo from './Generics/HeadingTwo'
+import Login from './Auth/Login'
 
-export class Home extends Component {
-  displayName = Home.name
+
+class Home extends Component {
 
   render() {
     return (
@@ -14,3 +15,5 @@ export class Home extends Component {
     );
   }
 }
+
+export default Home
