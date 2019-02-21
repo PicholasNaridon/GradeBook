@@ -16,7 +16,7 @@ class CourseMain extends Component {
     componentDidMount() {
         var that = this
         setTimeout(function () {
-            fetch(`api/teacher/1/courses/details/${that.props.match.params.id}`)
+            fetch(`api/teacher/${that.props.teacherId}/courses/details/${that.props.match.params.id}`)
                 .then(response => response.json())
                 .then(data => {
                     console.log(data)

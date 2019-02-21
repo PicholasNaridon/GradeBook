@@ -11,17 +11,20 @@ class TeacherIndex extends Component {
             teacher: {},
             loading: true
         };
+
     }
 
     componentDidMount() {
+
         var user = JSON.parse(localStorage.user)
-        console.log(user)
+
         var that = this
         setTimeout(function () {
             fetch(`api/teacher/${user.id}/Courses/all`)
                 .then(response => response.json())
                 .then(data => {
                     that.setState({
+                        user: user,
                         teacher: data[0],
                         loading: false
                     });
@@ -40,7 +43,7 @@ class TeacherIndex extends Component {
                     <HeadingOne> Welcome {this.state.teacher.firstName}!</HeadingOne>
                     <div>
 
-                        <TeacherCourseList courses={this.state.teacher.courses} />
+                        <TeacherCourseList teacherId={this.state.user.Id} courses={this.state.teacher.courses} />
 
                     </div>
                 </div>

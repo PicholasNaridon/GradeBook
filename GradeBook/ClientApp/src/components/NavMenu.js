@@ -44,7 +44,7 @@ export class NavMenu extends Component {
               </NavItem>
             </LinkContainer>
             <NavItem onClick={this.logout}>
-              <Glyphicon glyph='user' /> Logout
+              <Glyphicon glyph='log-out' /> Logout
             </NavItem>
           </Nav>
         </Navbar.Collapse>
