@@ -6,8 +6,19 @@ import './NavMenu.css';
 import logo from '../Assets/Images/frontline-logo-white.png'
 
 export class NavMenu extends Component {
-  displayName = NavMenu.name
+  constructor(props){
+    super(props)
+    this.state ={}
 
+    this.logout = this.logout.bind(this)
+  }
+
+  logout(){
+    console.log("test")
+    localStorage.clear();
+    window.location.href = '/';
+  } 
+  
   render() {
     return (
       <Navbar fixedTop fluid collapseOnSelect>
@@ -32,6 +43,9 @@ export class NavMenu extends Component {
                 <Glyphicon glyph='education' /> Students
               </NavItem>
             </LinkContainer>
+            <NavItem onClick={this.logout}>
+              <Glyphicon glyph='user' /> Logout
+            </NavItem>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

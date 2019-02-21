@@ -45,6 +45,8 @@ class Login extends Component {
         })
         .then((response) =>{
             if (response.status === 200){
+                console.log(response)
+                localStorage.setItem("userType", (that.state.isStudent ? 'student' : 'teacher'))
                 that.props.handleLogin()
             }else{
                 that.setState({

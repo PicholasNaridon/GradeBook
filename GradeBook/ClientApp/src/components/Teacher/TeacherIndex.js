@@ -14,9 +14,11 @@ class TeacherIndex extends Component {
     }
 
     componentDidMount() {
+        var user = JSON.parse(localStorage.user)
+        console.log(user)
         var that = this
         setTimeout(function () {
-            fetch('api/teacher/1/Courses/all')
+            fetch(`api/teacher/${user.id}/Courses/all`)
                 .then(response => response.json())
                 .then(data => {
                     that.setState({
