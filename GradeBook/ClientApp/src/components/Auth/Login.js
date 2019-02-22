@@ -70,9 +70,13 @@ class Login extends Component {
                     <form onSubmit={this.handleSubmit}>
                         <div>{this.state.message}</div>
                         <label for="email">Email</label>
+                        <br />
                         <input type="text" id="email" name="email" value={this.state.email} onChange={this.handleChange}/>
+                        <br />
                         <label for="password">Password</label>
+                        <br />
                         <input type="password" id="password" name="password" value={this.state.password} onChange={this.handleChange}/>
+                        <br />
                         <button type="submit"> Login </button>
                     </form>
                     <label>Login as Teacher</label>
@@ -87,9 +91,13 @@ class Login extends Component {
                     <form onSubmit={this.handleSubmit}>
                         <div>{this.state.message}</div>
                         <label for="email">Email</label>
+                        <br />
                         <input type="text" id="email" name="email" value={this.state.email} onChange={this.handleChange}/>
+                        <br />
                         <label for="password">Password</label>
+                        <br />
                         <input type="password" id="password" name="password" value={this.state.password} onChange={this.handleChange}/>
+                        <br />
                         <button type="submit"> Login </button>
                     </form>
                     <label>Login as Student</label>
