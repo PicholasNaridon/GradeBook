@@ -33,7 +33,7 @@ class Assignment extends Component {
                     <AssignmentGrades grades={this.state.assignment.grades} />
                 </div>
             )
-        }else {
+        } else {
             return (
                 <div></div>
             )

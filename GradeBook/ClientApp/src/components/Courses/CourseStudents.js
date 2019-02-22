@@ -10,16 +10,15 @@ class CourseStudents extends Component {
         }
     }
 
-
-
     render() {
-        console.log(this.props.students)
         return (
             <div>
                 {
                     this.props.students.map(function (student) {
                         return (
-                            <div key={student.student.id}>{student.student.firstName} {student.student.lastName}</div>
+                            <div key={student.student.id} student={student.student}>
+                                {student.student.firstName} {student.student.lastName}
+                            </div>
                         )
                     })
                 }
