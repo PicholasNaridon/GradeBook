@@ -1,4 +1,5 @@
 ﻿import React, { Component } from 'react'
+import HeadingOne from '../Generics/HeadingOne'
 
 class Login extends Component {
     constructor(props) {
@@ -65,7 +66,7 @@ class Login extends Component {
         if (isStudent){
             return (
                 <div>
-                    <h1>Student login</h1>
+                    <HeadingOne>Student login</HeadingOne>
                     <form onSubmit={this.handleSubmit}>
                         <div>{this.state.message}</div>
                         <label for="email">Email</label>
@@ -82,7 +83,7 @@ class Login extends Component {
         }else {
             return (
                 <div>
-                    <h1>Teacher login</h1>
+                    <HeadingOne>Teacher login</HeadingOne>
                     <form onSubmit={this.handleSubmit}>
                         <div>{this.state.message}</div>
                         <label for="email">Email</label>
